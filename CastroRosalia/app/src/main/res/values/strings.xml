@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">PrimerParcialTp</string>
+    <string name="bienvenido">Bienvenido a ESO QUIERO</string>
+    <string name="app">app.!</string>
+    <string name="aplicacion">La aplicación que te ayudará a recordar.</string>
+    <string name="email">Ingresa E-mail</string>
+    <string name="clave">Ingresa tu clave</string>
+    <string name="recordarme">Recordarme</string>
+    <string name="registrarme">Registrarme</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="titulo">ESO QUIERO app.!</string>
+    <string name="formulario">Formulario de registro</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="ingresaUsuario">Ingresa tu usuario</string>
+    <string name="ingresarClave">Ingresa una clave</string>
+    <string name="ingresaEmail">Ingresa tu E-Mail</string>
+    <string name="nuevo">Registrarse</string>
+    <string name="cerrar">Cerrar Sesión</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="categorias">Categorias</string>
+    <string name="back">Botón back</string>
+    <string name="nueva">Nueva Categoria.!</string>
+    <string name="nombreCat">Nombre de la Categoria</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="favorita">Favorita</string>
+    <string name="crear">Crear</string>
+    <string name="cancelar">Cancelar</string>
+</resources>

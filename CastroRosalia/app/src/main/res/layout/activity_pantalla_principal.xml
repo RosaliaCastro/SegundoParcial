@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/fondo"
+    tools:context=".Principal.PantallaPrincipal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linearlayout1">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:id="@+id/imagenView"
+            android:src="@drawable/smile"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linerlayaout2"
+        android:layout_below="@+id/linearlayout1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/bienvenido"
+            android:id="@+id/textBienvenido"
+            android:textColor="#1b4be8" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/app"
+            android:textColor="#1b4be8"
+            android:id="@+id/textApp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="#1b4be8"
+            android:text="@string/aplicacion"
+            android:id="@+id/textAplicacion"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linerlayaout3"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextEmail"
+            android:singleLine="true"
+            android:ems="5"
+            android:textColor="#1b4be8"
+            android:hint="@string/email"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextClave"
+            android:textColor="#1b4be8"
+            android:hint="@string/clave"
+            android:singleLine="true"
+            android:ems="5"
+            android:inputType="textPassword"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linerlayaout4"
+        android:orientation="vertical"
+        android:layout_below="@+id/linerlayaout3"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="58dp">
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/checkboxRecordar"
+            android:textColor="#1b4be8"
+            android:text="@string/recordarme"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linerlayaout5"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linerlayaout4"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnRegistrarme"
+            android:text="@string/registrarme"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="#1b4be8"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnIngresar"
+            android:text="@string/ingresar"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="#1b4be8"/>
+    </LinearLayout>
+</RelativeLayout>

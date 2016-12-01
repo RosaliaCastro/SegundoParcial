@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">First Partial</string>
+    <string name="bienvenido">Welcom to ESO QUIERO</string>
+    <string name="app">app.!</string>
+    <string name="aplicacion">The application that helps your remember.</string>
+    <string name="email">Enter email</string>
+    <string name="clave">Enter password</string>
+    <string name="recordarme">Remenberme</string>
+    <string name="registrarme">Sign in</string>
+    <string name="ingresar">Enter</string>
+    <string name="titulo">ESO QUIERO app.!</string>
+    <string name="formulario">Registration Form</string>
+    <string name="nombre">Name</string>
+    <string name="apellido">Last name</string>
+    <string name="ingresaUsuario">Enter user</string>
+    <string name="ingresarClave">Enter password</string>
+    <string name="ingresaEmail">Enter E-Mail</string>
+    <string name="nuevo">Sign in</string>
+    <string name="cerrar">Sing off</string>
+    <string name="favoritos">Favourite</string>
+    <string name="categorias">Category</string>
+    <string name="back">Back Button</string>
+    <string name="nueva">New Category.!</string>
+    <string name="nombreCat">Noame of the Category</string>
+    <string name="descripcion">Description</string>
+    <string name="favorita">Favorite</string>
+    <string name="crear">Create</string>
+</resources>

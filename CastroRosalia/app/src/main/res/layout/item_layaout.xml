@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fondo02">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/imageView3"
+        android:src="@drawable/smile"/>
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#1b4be8"
+            android:text="@string/nombreCat"
+            android:id="@+id/txtCategoria"/>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textColor="#1b4be8"
+            android:text="@string/categorias"
+            android:id="@+id/txtDescripcion"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:gravity="center">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#1b4be8"
+            android:gravity="center_horizontal"
+            android:id="@+id/checkSeleccionar"/>
+
+    </LinearLayout>
+
+</LinearLayout>
