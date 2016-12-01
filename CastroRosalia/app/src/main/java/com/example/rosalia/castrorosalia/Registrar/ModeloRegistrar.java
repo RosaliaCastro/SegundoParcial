@@ -15,22 +15,13 @@ import java.util.List;
  * Created by Jona on 22/11/2016.
  */
 public class ModeloRegistrar {
-
-    public ModeloRegistrar(String nom, String ape, String user,String e_mail, String password){
-        nombre=nom;
-        apellido=ape;
-        usuario=user;
-        email=e_mail;
-        clave=password;
-    }
-    public ModeloRegistrar(){}
-
-
     private String nombre;
     private String apellido;
     private String usuario;
     private String email;
     private String clave;
+    private boolean error;
+    private String mensaje;
 
     public String getNombre() {
         return nombre;
@@ -44,11 +35,17 @@ public class ModeloRegistrar {
         return usuario;
     }
 
-    public String getEmail(){return email;}
+    public String getEmail(Boolean error){return email;}
 
     public String getClave() {
         return clave;
     }
+
+    public Boolean getError() {
+        return error;
+    }
+
+    public String getMensaje(){return this.mensaje;}
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -68,21 +65,21 @@ public class ModeloRegistrar {
         this.clave = clave;
     }
 
-    static void registrar (String archivo)throws XmlPullParserException, IOException, JSONException {
+    public void setError(Boolean error){this.error = error;}
 
-        String miArchivo=archivo.toString();
-        List<ModeloRegistrar> lista= new ArrayList<>();
-        JSONObject objetoJson = new JSONObject (miArchivo);
-        JSONArray jUsuarios = objetoJson.getJSONArray("arc-export.json");
+    public void setMensaje(String mensaje) {this.mensaje = mensaje;}
+
+    static ModeloRegistrar registrar (String archivo)throws XmlPullParserException, IOException, JSONException {
+        ModeloRegistrar registrar= new ModeloRegistrar();
+        JSONObject objetoJson = new JSONObject (archivo);
         try {
-            for (int i = 0; i < jUsuarios.length(); i++){
-                JSONObject c = jUsuarios.getJSONObject(i);
-                Boolean error = c.getBoolean("error");
-                String mensaje =c.getString("message");
-            }
+                Boolean error = objetoJson.getBoolean("error");
+                String mensaje =objetoJson.getString("message");
+                registrar.setError(error);
+                registrar.setMensaje(mensaje);
         } catch (JSONException ejson){
             ejson.printStackTrace();
         }
-
+        return registrar;
     }
 }

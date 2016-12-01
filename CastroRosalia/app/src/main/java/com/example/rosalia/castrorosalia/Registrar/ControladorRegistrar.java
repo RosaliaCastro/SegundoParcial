@@ -13,12 +13,10 @@ import com.example.rosalia.castrorosalia.R;
  * Created by Jona on 22/11/2016.
  */
 public class ControladorRegistrar implements View.OnClickListener {
-
     ModeloRegistrar miModelo;
     Activity miActivity;
     VistaRegistrar miVista;
     HiloRegistrar myHiloRegistrar;
-
     String nombre;
     String apellido;
     String usuario;
@@ -50,7 +48,6 @@ public class ControladorRegistrar implements View.OnClickListener {
             Intent volverPrincipal = new Intent(miActivity,PantallaPrincipal.class);
             startActivity(volverPrincipal);
         }
-
     }
     public void Registrar(String myNombre, String myApellido, String myUsuario, String myEmail, String myClave){
         Uri.Builder parametro = new Uri.Builder();

@@ -12,7 +12,6 @@ import java.io.IOException;
 public class HiloLogin extends Thread {
     private Handler handler;
     private Uri.Builder myParametro;
-
     public HiloLogin (Handler miHandler){
         handler=miHandler;
     }
@@ -40,6 +39,5 @@ public class HiloLogin extends Thread {
         }catch (InterruptedException e){
             e.printStackTrace();
         }
-
     }
 }

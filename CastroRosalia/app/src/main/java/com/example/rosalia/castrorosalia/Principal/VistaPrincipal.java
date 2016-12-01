@@ -21,17 +21,12 @@ public class VistaPrincipal {
 
 
     public VistaPrincipal(ModeloPrincipal modeloPrincipal, Activity activity, ControladorPrincipal controladorPrincipal) {
-
         miModeloP = modeloPrincipal;
-
         registrarme = (Button) activity.findViewById(R.id.btnRegistrarme);
         ingresar = (Button) activity.findViewById(R.id.btnIngresar);
-
         email = (EditText) activity.findViewById(R.id.editTextEmail);
         clave = (EditText) activity.findViewById(R.id.editTextClave);
-
         recordarme=(CheckBox)activity.findViewById(R.id.checkboxRecordar);
-
         registrarme.setOnClickListener(controladorPrincipal);
         ingresar.setOnClickListener(controladorPrincipal);
         recordarme.setOnClickListener(controladorPrincipal);

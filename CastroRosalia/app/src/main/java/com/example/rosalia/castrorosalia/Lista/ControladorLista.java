@@ -14,10 +14,12 @@ public class ControladorLista implements View.OnClickListener {
     ModeloLista myModelo;
     VistaLista myVista;
     Activity myActivity;
+    String autorizacion;
 
-    public ControladorLista(ModeloLista modelo, Activity activity){
+    public ControladorLista(ModeloLista modelo, Activity activity, String apiKey){
         myModelo=modelo;
         myActivity=activity;
+        autorizacion = apiKey;
     }
     public ControladorLista (VistaLista vistaLista){myVista=vistaLista;}
     public void setMiVista(VistaLista miVista) {
@@ -31,6 +33,7 @@ public class ControladorLista implements View.OnClickListener {
     public void onClick(View view) {
         if (view.getId() == R.id.fabAgregar){
             Intent intent = new Intent(myActivity, Categoria.class);
+            intent.putExtra("apiKey", autorizacion);
             startActivity(intent);
 
         }

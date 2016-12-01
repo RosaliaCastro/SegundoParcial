@@ -14,10 +14,10 @@ import java.util.List;
  * Created by Jona on 22/11/2016.
  */
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
-    private List<ModeloCategoria> lista;
+    private List<ModeloLista> lista;
     private MyOnItemClick listener;
 
-    public MyAdapter(List<ModeloCategoria> lista, MyOnItemClick listener){
+    public MyAdapter(List<ModeloLista> lista, MyOnItemClick listener){
         this.lista = lista;
         this.listener = listener;
     }
@@ -32,7 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position){
-        ModeloCategoria lisCat = lista.get(position);
+        ModeloLista lisCat = lista.get(position);
         holder.txtCategoria.setText(lisCat.getNombreCategoria());
         holder.txtDescripcion.setText(lisCat.getDescripcionCategoria());
         holder.setPosition(position);

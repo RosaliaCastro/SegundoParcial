@@ -80,6 +80,7 @@
             android:id="@+id/editTextClaveR"
             android:textColor="#1b4be8"
             android:singleLine="true"
+            android:inputType="textPassword"
             android:hint="@string/ingresarClave"/>
     </LinearLayout>
 

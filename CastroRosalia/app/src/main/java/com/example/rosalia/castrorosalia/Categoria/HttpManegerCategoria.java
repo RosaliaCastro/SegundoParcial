@@ -1,28 +1,40 @@
-package com.example.rosalia.castrorosalia.Lista;
+package com.example.rosalia.castrorosalia.Categoria;
 
 import android.net.Uri;
 import android.util.Log;
 
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by Jona on 28/11/2016.
+ * Created by Jona on 01/12/2016.
  */
-public class HttpManegerLista {
-    public byte[] obtenerLista (String urlString, Uri.Builder parametro) throws IOException {
+public class HttpManegerCategoria {
+    public byte[] agregarCategoria (String urlString, Uri.Builder postParametro) throws IOException {
+
         URL url = new URL(urlString);
         HttpURLConnection conexion =(HttpURLConnection) url.openConnection();
         conexion.setReadTimeout(10000);
         conexion.setConnectTimeout(15000);
-        conexion.setRequestMethod("GET");
-        conexion.connect();
+        conexion.setRequestMethod("POST");
+        //conexion.connect();
+        conexion.setDoOutput(true);
+        String query = postParametro.build().getEncodedQuery();
+        OutputStream os = conexion.getOutputStream();
+        BufferedWriter escribir = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+        escribir.write(query);
+        escribir.flush();
+        escribir.close();
+        os.close();
         int response = conexion.getResponseCode();
         Log.d("http", "Response code:" + response);
-        if (response == 200|| response == 201 ){
+        if (response == 200 || response == 201){
             InputStream is = conexion.getInputStream();
             ByteArrayOutputStream baos= new ByteArrayOutputStream();
             byte[] buffet = new byte[1024];

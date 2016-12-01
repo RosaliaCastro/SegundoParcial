@@ -11,13 +11,11 @@ import com.example.rosalia.castrorosalia.R;
  */
 public class VistaRegistrar {
     ModeloRegistrar miModelo;
-
     private EditText nombre;
     private EditText apellido;
     private EditText usuario;
     private EditText email;
     private EditText clave;
-
     private Button registrarme;
     private Button cancelar;
 
@@ -29,14 +27,10 @@ public class VistaRegistrar {
         usuario=(EditText)activity.findViewById(R.id.editTextUsuarioR);
         email=(EditText)activity.findViewById(R.id.editTextEmailR);
         clave=(EditText)activity.findViewById(R.id.editTextClaveR);
-
         registrarme=(Button)activity.findViewById(R.id.btnRegistrarseR);
         cancelar=(Button)activity.findViewById(R.id.btnCancelarR);
-
         registrarme.setOnClickListener(controladorRegistrar);
         cancelar.setOnClickListener(controladorRegistrar);
-
-
     }
     public String TraerNombre(){
         String miNombre;

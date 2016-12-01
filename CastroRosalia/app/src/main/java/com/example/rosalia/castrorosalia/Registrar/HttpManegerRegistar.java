@@ -17,13 +17,11 @@ import java.net.URL;
  */
 public class HttpManegerRegistar {
     public byte[] registrarUsuario (String urlString, Uri.Builder postParametro) throws IOException {
-
         URL url = new URL(urlString);
         HttpURLConnection conexion =(HttpURLConnection) url.openConnection();
         conexion.setReadTimeout(10000);
         conexion.setConnectTimeout(15000);
         conexion.setRequestMethod("POST");
-        //conexion.connect();
         conexion.setDoOutput(true);
         String query = postParametro.build().getEncodedQuery();
         OutputStream os = conexion.getOutputStream();

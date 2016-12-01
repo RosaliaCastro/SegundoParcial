@@ -32,11 +32,15 @@ public class ControladorCategoria extends AppCompatActivity implements View.OnCl
     private VistaCategoria miVista;
     String nuevoNombre;
     String nuevaDescripcion;
+    HiloCategoria myHilo;
+    String autorizacion;
     public ControladorCategoria(){}
 
-    public ControladorCategoria(ModeloCategoria mod, Activity activity){
+    public ControladorCategoria(ModeloCategoria mod, Activity activity, HiloCategoria hilo, String apiKey){
         miMod=mod;
         myActivity=activity;
+        myHilo=hilo;
+        autorizacion=apiKey;
     }
     public void setMiVista(VistaCategoria vista){miVista =vista;}
 
@@ -45,7 +49,14 @@ public class ControladorCategoria extends AppCompatActivity implements View.OnCl
         imagen= (ImageView)myActivity.findViewById(R.id.imagenNueva);
         imagen.setImageURI(uri);
     }
-
+public void crear(String nom,String des){
+    Uri.Builder parametro= new  Uri.Builder();
+    parametro.appendQueryParameter("AUTHORIZATION",autorizacion);
+    parametro.appendQueryParameter("titulo",nom);
+    parametro.appendQueryParameter("descripcion", des);
+    myHilo.traerParametros(parametro);
+    myHilo.start();
+}
     @Override
     public void onClick(View view) {
         if (view.getId()== R.id.btnTomarFoto){
@@ -63,11 +74,7 @@ public class ControladorCategoria extends AppCompatActivity implements View.OnCl
         }else if(view.getId()==R.id.btnCrear){
             nuevoNombre = miVista.traerNomCategoria();
             nuevaDescripcion = miVista.traerDesCategoria();
-            miMod.setNombreCategoria(nuevoNombre);
-            miMod.setDescripcionCategoria(nuevaDescripcion);
-
-            //crear un objeto categoria y agregarlo a la lista
-
+            crear(nuevoNombre,nuevaDescripcion);
         }
     }
 

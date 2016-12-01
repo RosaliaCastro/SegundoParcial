@@ -29,29 +29,20 @@ public class ControladorPrincipal implements View.OnClickListener {
     private Activity miActivity;
     String email;
     String clave;
-    String apikey;
-    //private MiDialogo miDialogo;
-    SharedPreferences miPreferences;
-    //private List<ModeloPrincipal> ListaUser;
     private HiloLogin myHilo;
 
-    public ControladorPrincipal(ModeloPrincipal modelo, Activity actividad, SharedPreferences preferences,HiloLogin hiloLogin) {
+    public ControladorPrincipal(ModeloPrincipal modelo, Activity actividad,HiloLogin hiloLogin) {
         miModelo = modelo;
         miActivity = actividad;
-        miPreferences = preferences;
-        //ListaUser=list;
-       //miDialogo=myDialogo;
         myHilo = hiloLogin;
     }
     public ControladorPrincipal(){}
     public ControladorPrincipal(VistaPrincipal vista) {
         miVista = vista;
     }
-
     public void setMiVista(VistaPrincipal miVista) {
         this.miVista = miVista;
     }
-
     private void startActivity(Intent intent) {
         miActivity.startActivity(intent);
     }
@@ -67,16 +58,12 @@ public class ControladorPrincipal implements View.OnClickListener {
                 clave = miVista.traerClave();
                 email = miVista.traerEmail();
                 ConsultarUsuario(email, clave);
-                SharedPreferences.Editor editor = miPreferences.edit();//lo guardo, sharedPreferences para recordarlo.
-                editor.putString("apiKey",apikey);
-                editor.commit();
                 }else if (view.getId() == R.id.btnIngresar) {
                     clave = miVista.traerClave();
                     email = miVista.traerEmail();
                     ConsultarUsuario(email,clave);
                 }
     }
-
     public void ConsultarUsuario(String email, String clave) {
         Uri.Builder parametro = new Uri.Builder();
         parametro.appendQueryParameter("email",email);
@@ -84,13 +71,4 @@ public class ControladorPrincipal implements View.OnClickListener {
         myHilo.traerParametros(parametro);
         myHilo.start();
     }
-    public void guardarApiKey (String apiKey){
-        apikey=apiKey;
-    }
 }
-
-//for(ModeloPrincipal mod:ListaUser){
-//if (mod.getMiEmail().equals(email)&& (mod.getMiClave().equals(clave))){
-//respuesta=true;
-//}
-//}

@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,27 +30,22 @@ import static java.lang.String.valueOf;
 public class PantallaPrincipal extends AppCompatActivity implements Handler.Callback {
     public static final int MENSAJE_LOGIN=1;
     private HiloLogin miHilo;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_principal);
-
         Handler.Callback callback = this;
         Handler handler = new Handler(callback);
         miHilo = new HiloLogin(handler);
-
         SharedPreferences preferences =getSharedPreferences("recordarme", Context.MODE_PRIVATE);
         if (this.ValidadPreferencia(preferences) ==true){
             Intent pantalla = new Intent(this, ListaCategoria.class);
             startActivity(pantalla);
         }
-
         ModeloPrincipal modeloPrincipal = new ModeloPrincipal();
-        ControladorPrincipal controladorPrincipal = new ControladorPrincipal(modeloPrincipal,this,preferences,miHilo);
+        ControladorPrincipal controladorPrincipal = new ControladorPrincipal(modeloPrincipal,this,miHilo);
         VistaPrincipal vistaPrincipal = new VistaPrincipal(modeloPrincipal,this,controladorPrincipal);
         controladorPrincipal.setMiVista(vistaPrincipal);
-
     }
 
     public boolean ValidadPreferencia(SharedPreferences preferences){
@@ -64,23 +60,31 @@ public class PantallaPrincipal extends AppCompatActivity implements Handler.Call
     @Override
     public boolean handleMessage(Message msg) {
         if (msg.arg1  == MENSAJE_LOGIN){
-            String archivoJson = msg.obj.toString();
-
+            String archivoJson = null;
+            try {
+                archivoJson = new String((byte[]) msg.obj,"UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
             try {
                 ModeloPrincipal miMod;
                 miMod= ModeloPrincipal.validarLogin(archivoJson);
 
-                    if(miMod.getError()== false){
-                        ControladorPrincipal control=new ControladorPrincipal();
-
-                        Intent intent2 = new Intent(this, ListaCategoria.class);
-                        startActivity(intent2);
-                    }
-
-                    MiDialogo dialogo= new MiDialogo();
-                    dialogo.show(this.getFragmentManager(),"dialogo");
-                    //miVista.Limpiar();
-
+                if (miMod.getError()== false && new Boolean(String.valueOf(R.id.checkboxRecordar)) == true){
+                    String apiKey= null;
+                    apiKey = miMod.getApiKey();
+                    SharedPreferences miPreferences = null;
+                    SharedPreferences.Editor editor = miPreferences.edit();//lo guardo, sharedPreferences para recordarlo.
+                    editor.putString("apiKey",apiKey);
+                    editor.commit();
+                    Intent intent2 = new Intent(this, ListaCategoria.class);
+                    startActivity(intent2);
+                }else if (miMod.getError()== false){
+                    Intent intent2 = new Intent(this, ListaCategoria.class);
+                    String api=miMod.getApiKey();
+                    intent2.putExtra("apiKey",api);
+                    startActivity(intent2);
+                }
             } catch (XmlPullParserException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -88,10 +92,7 @@ public class PantallaPrincipal extends AppCompatActivity implements Handler.Call
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
         }
-
         return false;
     }
-
 }

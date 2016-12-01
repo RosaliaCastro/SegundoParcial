@@ -11,14 +11,12 @@ import java.io.IOException;
 public class HiloRegistrar extends Thread {
     private Handler handler;
     private Uri.Builder myParametro;
-
     public HiloRegistrar (Handler miHandler){
         handler=miHandler;
     }
     public void traerParametros(Uri.Builder parametro){
         myParametro=parametro;
     }
-
     @Override
     public void run() {
         super.run();

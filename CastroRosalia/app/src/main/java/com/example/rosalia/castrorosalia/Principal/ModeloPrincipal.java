@@ -21,6 +21,7 @@ public class ModeloPrincipal {
     private String miEmail;
     private boolean error;
     private String apiKey;
+
     public String getMiClave() {
         return miClave;
     }
@@ -48,14 +49,9 @@ public class ModeloPrincipal {
     static ModeloPrincipal validarLogin (String archivo)throws XmlPullParserException, IOException, JSONException{
         ModeloPrincipal miMod = new ModeloPrincipal();
         JSONObject objetoJson = new JSONObject(archivo);
-        JSONArray jUsuarios = objetoJson.getJSONArray("");
-
         try {
-            for (int i = 0; i < jUsuarios.length(); i++){
-                JSONObject c = jUsuarios.getJSONObject(i);
-                miMod.setError(c.getBoolean("error"));
-                miMod.setApiKey(c.getString("apiKey"));
-            }
+                miMod.setError(objetoJson.getBoolean("error"));
+                miMod.setApiKey(objetoJson.getString("apiKey"));
         } catch (JSONException ejson){
             ejson.printStackTrace();
         }
